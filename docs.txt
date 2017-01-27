@@ -1,7 +1,19 @@
+Requirements:
+- Java JDK
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
+- NodeJS
+https://nodejs.org/en/download/
+- Protractor
 npm install -g protractor
-
+- Selenium server
 webdriver-manager update
 
+Execution:
+1) Start Selenium server
 webdriver-manager start
-
+2) Start test execution in main project directory
 protractor conf.js
+
+Technology:
+Protracor was chosen over pure Selenium for testing webpage written in Angular.
+With more time it could be extended with Cucumber and BDD approach.

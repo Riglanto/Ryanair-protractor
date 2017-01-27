@@ -17,18 +17,6 @@ var RyanairHomepage = function() {
     var childrenButton = element.all(by.className('core-btn inc core-btn-wrap')).get(2);
     var searchButton = element(by.className('col-flight-search-right')).all(by.tagName('button')).get(1);
 
-    var familyPopup = element(by.className('promo-popup-benefits family'));
-
-    var fligthsTable = element(by.className('flights-table'));
-    var departureButton = element.all(by.className('flights-table-price__price')).get(0);
-    var destinationButton = element.all(by.className('flights-table-price__price')).get(1);
-
-    var fareSelectButton = element.all(by.id('continue')).get(0).element(by.xpath('..'));
-    var continueButton = element(by.id('continue'));
-    //element(by.className('core-btn-primary flight-selector__listing-footer-button-next'));
-
-    var selectSeatsPopupButton = element(by.className('core-btn-primary same-seats ng-scope'));
-
     this.get = function() {
         browser.get('https://www.ryanair.com/ie/en/');
     };
@@ -74,44 +62,6 @@ var RyanairHomepage = function() {
 
     this.search = function() {
         searchButton.click();
-    }
-
-    this.closeFamilyPopup = function() {
-        familyPopup.click();
-    }
-
-    this.selectDeparture = function() {
-        departureButton.click();
-        this.waitForEnabled(fareSelectButton);
-        fareSelectButton.click();
-    }
-
-    this.selectDestination = function() {
-        destinationButton.click();
-        this.waitForEnabled(fareSelectButton);
-        fareSelectButton.click();
-    }
-
-    this.continueBooking = function() {
-        browser.manage().timeouts().implicitlyWait(5000);
-        continueButton.click();
-    }
-
-    this.waitForSearchResults = function() {
-        this.waitForVisible(departureButton);
-    }
-
-    this.waitForSelectSeats = function() {
-        this.waitForVisible(selectSeatsPopupButton);
-    }
-
-    this.waitForVisible = function(object) {
-        var EC = protractor.ExpectedConditions;
-        browser.wait(EC.visibilityOf(object), 10000);
-    }
-
-    this.waitForEnabled = function(object) {
-        browser.wait(object.isEnabled(), 10000);
     }
 }
 
