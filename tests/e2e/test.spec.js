@@ -2,11 +2,11 @@
 
 var RyanairHomepage = require('./po/homepage.po.js');
 var RyanairFaresPage = require('./po/selectfare-page.po.js');
+var RyanairSeatsPage = require('./po/selectseats-page.po.js');
 
 describe('Ryanair ticket service', function() {
     it('should reject payment due incorrect card details', function() {
         browser.manage().deleteAllCookies();
-        // jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
 
         var ryanairHomepage = new RyanairHomepage();
         ryanairHomepage.get();
@@ -28,11 +28,12 @@ describe('Ryanair ticket service', function() {
         ryanairFaresPage.selectDeparture();
 
         ryanairFaresPage.continueBooking();
-//
-        ryanairFaresPage.waitForSelectSeats();
-        ryanairFaresPage.closeSelectSeatsPopup();
 
-        //ryanairHomepage.closeFamilyPopup();
+        var ryanairSeatsPage = new RyanairSeatsPage();
+        ryanairSeatsPage.closeSelectSeatsPopup();
+
+        ryanairSeatsPage.pickSeats();
+        ryanairSeatsPage.checkout();
 
         browser.sleep(3000);
     });

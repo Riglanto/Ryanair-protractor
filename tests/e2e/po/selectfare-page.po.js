@@ -10,9 +10,6 @@ var SelectFaresPage = function() {
     var fareSelectButton = element.all(by.id('continue')).get(0).element(by.xpath('..'));
     var continueButton = element(by.id('continue'));
 
-    var selectSeatsPopupButton = element(by.className('seat-map-prompt mandatory-seats-prompt')).element(by.tagName('button'));
-    // var selectSeatsPopupButton = element(by.className('core-btn-primary same-seats ng-scope'));
-
     this.closeFamilyPopup = function() {
         familyPopup.click();
     }
@@ -35,19 +32,6 @@ var SelectFaresPage = function() {
 
     this.waitForSearchResults = function() {
         this.waitForVisible(departureButton);
-    }
-
-    this.waitForSelectSeats = function() {
-        // browser.ignoreSynchronization = true;
-        // browser.sleep(5000);
-        // this.waitForVisible(selectSeatsPopupButton);
-        browser.wait(function() {
-            return selectSeatsPopupButton.isPresent();
-        }, 60000);
-    }
-
-    this.closeSelectSeatsPopup = function() {
-        selectSeatsPopupButton.click();
     }
 
     this.waitForVisible = function(object) {
